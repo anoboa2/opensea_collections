@@ -20,7 +20,6 @@ This project aims to generate 4 metrics within an NFT collection:  Uniqueness, R
 - Mechanism for pulling Ethereum smart contract details for a collection (typically OpenZeppelin)
 - Mechanism for pulling token supply and metadata for each NFT within a collection
 - Aggregator that calculates attribute and trait statistics for each collection
--
 
 ## Future Work
 This project is still in progress.  Some future work that is planned is:
