@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-import numpy as np
+
 
 collections = [
     'cryptopunks',
@@ -30,11 +30,8 @@ collections = [
     'robotos-official'
     ]
 
-collection_report = []
-
 def getCollectionStats(collection):
     endpoint = 'https://api.opensea.io/api/v1/collection/'
-    headers = {}
 
     response = requests.get(url=endpoint+collection)
     data = response.json()
@@ -66,7 +63,6 @@ def parseTraits(data):
 for collection in collections:
     print(f'Working on {collection}')
     data = getCollectionStats(collection)
-    collection_report.append(parseCollectionDetails(data))
     attributes, traits = parseTraits(data)
     d = []
 
@@ -103,6 +99,3 @@ for collection in collections:
 
     distribution = distribution[['Symbol', 'Attribute', 'Trait', 'Count', 'Trait_Frequency', 'Trait_Rank', 'Overall_Frequency', 'Overall_Rank', 'Attribute_Frequency', 'Rarity_Score']]
     distribution.to_csv(f'distributions/{collection}_distribution.csv')
-
-collections_df = pd.DataFrame(collection_report)
-collections_df.to_csv('collections.csv')
