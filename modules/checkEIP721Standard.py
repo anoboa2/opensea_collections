@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import os
 
 
 def checkTokenURI(contract_address):
@@ -8,7 +9,7 @@ def checkTokenURI(contract_address):
         'module': 'contract',
         'action': 'getabi',
         'address': contract_address,
-        'apikey': 'XABY2ZXGJIC771B9ACVIVARRRU2MRY1UPE'
+        'apikey': os.getenv('ETHERSCAN_APIKEY')
     }
     r = requests.get(endpoint, params=params)
 
